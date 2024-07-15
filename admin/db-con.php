@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect("localhost" , "root" , "" , "mk_fashion") or die("Db not Connected");
+$con = mysqli_connect("localhost" , "root" , "" , "deals") or die("Db not Connected");
 
 
 ?>
