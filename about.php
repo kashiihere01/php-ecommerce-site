@@ -16,7 +16,10 @@
 <body>
    
 <?php require_once("includes/header.php"); ?>
-
+</div>
+            </div>
+        </div>
+    </section>
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
         <div class="container">
