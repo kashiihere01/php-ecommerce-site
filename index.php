@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -7,7 +8,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>Deals24</title>
 
 <?php require_once("includes/css-links.php"); ?>
 </head>
@@ -43,7 +44,7 @@
                 <div class="categories__slider owl-carousel">
                 <?php while ($row = mysqli_fetch_assoc($cats)) { ?>
                                     <div class="col-lg-3">
-                                        <div class="categories__item set-bg" data-setbg="<?php echo getImageUrl("categories", $row['category_image']) ?>">
+                                        <div class="categories__item set-bg" data-setbg="admin/images/categories/<?php echo $row['category_image'] ?>">
                                             <h5><a href="./shop.php"><?= $row['category'] ?></a></h5>
                                         </div>
                                     </div>
@@ -69,7 +70,7 @@
                 <div class="categories__slider owl-carousel">
                 <?php while ($row = mysqli_fetch_assoc($latestProducts)) { ?>
                                     <div class="col-lg-3">
-                                        <div class="categories__item set-bg" data-setbg="<?php echo getImageUrl("product", $row['product_image']) ?>">
+                                        <div class="categories__item set-bg" data-setbg="admin/images/product/<?php echo $row['product_image']?>">
                                             <h5><a href="./shop.php"><?= $row['product_name'] ?></a></h5>
                                         </div>
                                     </div>

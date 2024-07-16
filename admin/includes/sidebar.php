@@ -25,13 +25,23 @@
                             <i class="fa-solid fa-cubes text-success fa-lg"></i> <span class="nav-text ml-2"> Products</span>
                         </a>
                     </li>
+                    <?php if ($_SESSION['user_role'] === "admin") {
+            echo '
+             <li>
+                        <a href="view-users.php" aria-expanded="false">
+                            <i class="fa-solid fa-users text-success fa-lg"></i> <span class="nav-text ml-2">  Users</span>
+                        </a>
+                    </li>
+        
+            ';
+        } ?>
 
                     <li>
                         <a href="customers.php" aria-expanded="false">
                             <i class="fa-solid fa-users text-success fa-lg"></i> <span class="nav-text ml-2">  Customers</span>
                         </a>
                     </li>
-
+                  
                     <li>
                         <a href="user-messages.php" aria-expanded="false">
                             <i class="fa-solid fa-envelope text-success fa-lg"></i> <span class="nav-text ml-2"> User Messages</span>

@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -27,12 +29,7 @@
     
     <!-- header-section include -->
     <?php require_once("./includes/header.php") ?>
- <!-- Call Button -->
- <img src="./img/call.png" class="call-icons"  height="50px"  onclick="openCallDial()">
-
-<!-- WhatsApp Button -->
-  <img src="./img/whatsapp.png" class="wa-icons" height="50px" onclick="openWhatsAppChat()">
-    <?php
+ <!-- Call Button --><?php 
         $pid = null;
         $product = null;
       

@@ -27,7 +27,7 @@
                     <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
                     <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
                     <span class="brand-title">
-                        <h2 class="text-white">MK Fashion</h2>
+                        <h2 class="text-white">Deals24</h2>
                     </span>
                 </a>
             </div>
@@ -69,7 +69,7 @@
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="./images/admin-users/<?= $row['image'] ?>" height="40" width="40" alt="">
+                                <img src="./images/admin-users/<?php echo $row['image'] ?>" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">

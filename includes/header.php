@@ -1,9 +1,15 @@
 <?php
-session_start();
-require_once("db-con.php");
-require_once("helpers.php");
-?>
 
+require_once ("db-con.php");
+require_once("helpers.php");
+
+$product_count_query = "SELECT COUNT(*) AS product FROM orders WHERE user_id= 1";
+$product_count_result = mysqli_query($con, $product_count_query);
+$product_count_row = mysqli_fetch_assoc($product_count_result);
+$all_product = $product_count_row['product'];
+         
+                  
+                  ?>
  
  <!-- Page Preloder -->
  <div id="preloder">
@@ -14,26 +20,34 @@ require_once("helpers.php");
  <div class="humberger__menu__overlay"></div>
  <div class="humberger__menu__wrapper">
      <div class="humberger__menu__logo">
-         <a href="#"><img src="img/logo.png" alt=""></a>
+         <a href="#"><img src="img/main.png" alt="" height="60px"></a>
      </div>
      <div class="humberger__menu__cart">
          <ul>
-             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-             <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+             
+             <li><a href="orders.php"><i class="fa fa-shopping-bag"></i> <span><?= $all_product?></span></a></li>
          </ul>
-         <div class="header__cart__price">item: <span>$150.00</span></div>
+       
      </div>
      <div class="humberger__menu__widget">
+     
+
     <?php if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
+
     echo " <div class='header__top__right__auth'>
-  <a href='login.php'><i class='fa fa-user'></i> $_SESSION[username]</a>
+  <a href='profile.php'><i class='fa fa-user'></i>My Account</a>
+
+</div>
+| 
+<div class='header__top__right__auth'>
+  <a href='logout.php'><i class='fa fa-user'></i>Logout</a>
 
 </div>
 
 ";
 } else {
     echo '              <div class="header__top__right__auth">
-<a href="login.php"><i class="fa fa-user"></i> Login</a>
+<a href="login.php"><i class="fa fa-sign-out"></i> Login</a>
 
 </div>';
 }?>
@@ -56,8 +70,8 @@ require_once("helpers.php");
      </div>
      <div class="humberger__menu__contact">
          <ul>
-             <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-             <li>Free Shipping for all Order of $99</li>
+             <li><i class="fa fa-envelope"></i> Dbalouch50@gmail.com</li>
+             <li>Cash will receivedon delivery</li>
          </ul>
      </div>
  </div>
@@ -71,8 +85,8 @@ require_once("helpers.php");
                  <div class="col-lg-6 col-md-6">
                      <div class="header__top__left">
                          <ul>
-                             <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                             <li>Free Shipping for all Order of $99</li>
+                             <li><i class="fa fa-envelope"></i> Dbalouch50@gmail.com</li>
+                             <li>Cash will receivedon delivery</li>
                          </ul>
                      </div>
                  </div>
@@ -84,32 +98,17 @@ require_once("helpers.php");
                              <a href="#"><i class="fa fa-instagram"></i></a>
                          
                          </div>
-                  <?php
-                  require_once "./includes/db-con.php";
-
-                  if (!isset($_SESSION['login'])  || $_SESSION['login'] == false) {
-                      header("location: login.php");
-                  } else {
-                      $sel_sql = "SELECT * FROM customers WHERE id='$_SESSION[user_id]' ";
-                      $result = mysqli_query($con, $sel_sql);
-                  
-                      $row = mysqli_fetch_assoc($result);
-                  
-                      $_SESSION['name'] = $row['name'];
-                      $_SESSION['email'] = $row['email'];
-                      $_SESSION['mobile'] = $row['mobile'];
-                   
-                      $_SESSION['city'] = $row['city'];
-                  
-                  }
-                  
-                  ?>
+          
                          <?php if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
     echo " <div class='header__top__right__auth'>
-  <a href='login.php'><i class='fa fa-user'></i>  $_SESSION[name]</a>
+  <a href='profile.php'><i class='fa fa-user'></i>  My Account</a>
 
 </div>
+| 
+<div class='header__top__right__auth'>
+  <a href='logout.php'><i class='fa fa-sign-out'></i>Logout</a>
 
+</div>
 ";
 } else {
     echo '              <div class="header__top__right__auth">
@@ -126,7 +125,7 @@ require_once("helpers.php");
          <div class="row">
              <div class="col-lg-3">
                  <div class="header__logo">
-                     <a href="./index.php"><img src="img/logo.png" alt=""></a>
+                     <a href="./index.php"><img src="img/main.png" alt="" height="80px"></a>
                  </div>
              </div>
              <div class="col-lg-6">
@@ -143,8 +142,8 @@ require_once("helpers.php");
              <div class="col-lg-3">
                  <div class="header__cart">
                      <ul>
-                         <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                         <li><a href="#"><i class="fa fa-shopping-cart"></i> <span>3</span></a></li>
+                        
+                         <li><a href="orders.php"><i class="fa fa-shopping-cart"></i> <span><?= $all_product?></span></a></li>
                      </ul>                 </div>
              </div>
          </div>
@@ -181,8 +180,16 @@ require_once("helpers.php");
                             <div class="hero__search__phone__icon">
                                 <i class="fa fa-phone"></i>
                             </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
+                            <div class="hero__search__phone__text text-black">
+                                <h5>03103431884</h5>
+                                <span>support 24/7 time</span>
+                            </div>
+                            <div class="hero__search__phone__text text-black">
+                                <h5>03103431884</h5>
+                                <span>support 24/7 time</span>
+                            </div>
+                            <div class="hero__search__phone__text text-black">
+                                <h5>03103431884</h5>
                                 <span>support 24/7 time</span>
                             </div>
                         </div>

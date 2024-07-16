@@ -1,3 +1,7 @@
+
+<?php
+require_once("./auth.php");
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -7,20 +11,19 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>Deals24</title>
     <?php require_once("./includes/css-links.php"); ?>
-    <!-- Footer Section End -->
+    <!-- Header Section Begin -->
 
-    <!-- Js Plugins -->
-    <?php require_once("./includes/header.php"); ?>
-    <?php
-  $productid = $_GET['pid'];
-      
-       
+</head>
 
-        $nextProducts = getnextProducts($con);
-
-    ?>
+<body>
+<?php require_once("./includes/header.php"); ?>
+<?php
+                            // Retrieving product ID from URL parameter
+                            $productid = isset($_GET['pid']) ? $_GET['pid'] : '';
+                            ?>
+<!-- Header Section End -->
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
         <div class="container">
@@ -42,7 +45,6 @@
     <!-- Checkout Section Begin -->
     <section class="checkout spad">
         <div class="container">
-         
             <div class="checkout__form">
                 <h4>Billing Details</h4>
                 <form action="./order-qry.php" method="POST">
@@ -62,14 +64,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="hidden" name="id" value="<?= htmlspecialchars($productid) ?>">
+                         
+                            <input type="hidden" name="pid" value="<?= htmlspecialchars($productid) ?>" >
 
                             <div class="checkout__input">
                                 <p>Address<span>*</span></p>
                                 <input type="text" placeholder="Street Address" class="checkout__input__add" name="address" required>
                             </div>
-                         
-                         
+
                             <div class="checkout__input">
                                 <p>Postcode / ZIP<span>*</span></p>
                                 <input type="number" placeholder="Enter Here............" name="zip" required>
@@ -89,9 +91,6 @@
                                 </div>
                             </div>
                             <button type="submit" class="site-btn" name="order">PLACE ORDER</button>
-                            
-                    
-                            
                         </div>
                     </div>
                 </form>
@@ -100,12 +99,12 @@
     </section>
     <!-- Checkout Section End -->
 
+    <!-- Footer Section Begin -->
     <?php require_once("./includes/footer.php"); ?>
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
     <?php require_once("./includes/js-links.php"); ?>
- 
 
 </body>
 

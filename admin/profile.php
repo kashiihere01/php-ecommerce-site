@@ -25,21 +25,7 @@
     <div class="content-body">
 
         <!-- Add and View Users -->
-        <?php if ($_SESSION['user_role'] === "admin") {
-            echo '
-            <div class="d-flex justify-content-end mt-4">
-            <div class="me-2">
-                <a href="./add-user.php" class="btn btn-success text-white"><i class="fa fa-plus"></i> Add Users</a>
-            </div>
-                  
-            <div class="ms-3">
-                <a href="./add-user.php" class="btn btn-success text-white"><i class="fa fa-plus"></i> Add Users</a>
-            </div>
-</div>
-        
-            ';
-        } ?>
-
+       
 
 
         <div class="container-fluid">
