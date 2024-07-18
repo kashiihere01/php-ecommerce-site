@@ -19,7 +19,7 @@
 <?php require_once("includes/header.php"); ?>
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="img/bread-crumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -47,6 +47,34 @@
                         <p>03103431884</p>
                     </div>
                 </div>
+                <?php
+
+if (!empty($_SESSION['success'])) {
+    $msg = $_SESSION['success'];
+    echo " <div class='alert alert-success alert-dismissible fade show credErr'>
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span>
+        </button> <strong>Congratulation! </strong> $msg</div>";
+}
+unset($_SESSION['success']);
+
+
+if (!empty($_SESSION['error'])) {
+    $msg = $_SESSION['error'];
+    echo " <div class='alert alert-danger alert-dismissible fade show credErr'>
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span>
+        </button> <strong>Warning! </strong> $msg</div>";
+}
+unset($_SESSION['error']);
+
+if (!empty($_SESSION['imgErr'])) {
+    $msg = $_SESSION['imgErr'];
+    echo " <div class='alert alert-danger alert-dismissible fade show credErr'>
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span>
+        </button> <strong>Warning! </strong> $msg</div>";
+}
+unset($_SESSION['imgErr']);
+
+?>
                 <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                     <div class="contact__widget">
                         <span class="icon_pin_alt"></span>
@@ -100,17 +128,18 @@
                     </div>
                 </div>
             </div>
-            <form action="#">
+            <form action="./message-qry.php" method="POST">
+
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Your name">
+                        <input type="text" placeholder="Your name" name="name">
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Your Email">
+                        <input type="text" placeholder="Your Email" name="email">
                     </div>
                     <div class="col-lg-12 text-center">
-                        <textarea placeholder="Your message"></textarea>
-                        <button type="submit" class="site-btn">SEND MESSAGE</button>
+                        <textarea placeholder="Your message" name="message"></textarea>
+                        <button type="submit" class="site-btn" name="send" value="send">SEND MESSAGE</button>
                     </div>
                 </div>
             </form>
@@ -123,7 +152,19 @@
 
     <!-- Js Plugins -->
     <?php require_once("./includes/js-links.php"); ?>
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                $(".uploadingErr").remove();
+            }, 5000);
 
+
+            setTimeout(function() {
+                $(".credErr").remove();
+            }, 3000);
+
+        })
+    </script>
 
 
 </body>

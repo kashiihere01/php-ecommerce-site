@@ -1,20 +1,31 @@
 <?php
 
+
+
+
 require_once ("db-con.php");
 require_once("helpers.php");
+if(isset($_SESSION["user_id"])){
+$user_id = $_SESSION["user_id"];
 
-$product_count_query = "SELECT COUNT(*) AS product FROM orders WHERE user_id= 1";
+$product_count_query = "SELECT COUNT(*) AS product FROM orders WHERE user_id= '$user_id'";
 $product_count_result = mysqli_query($con, $product_count_query);
 $product_count_row = mysqli_fetch_assoc($product_count_result);
 $all_product = $product_count_row['product'];
-         
-                  
-                  ?>
+    
+// wishlist
+$wishlist_count_query = "SELECT COUNT(*) AS product_wishlist FROM wishlist WHERE user_id= '$user_id'";
+$wishlist_count_result = mysqli_query($con, $wishlist_count_query);
+$wishlist_count_row = mysqli_fetch_assoc($wishlist_count_result);
+$all_wishlist = $wishlist_count_row['product_wishlist'];
+}
+              ?>
+
  
  <!-- Page Preloder -->
- <div id="preloder">
+ <!-- <div id="preloder">
      <div class="loader"></div>
- </div>
+ </div> -->
 
  <!-- Humberger Begin -->
  <div class="humberger__menu__overlay"></div>
@@ -24,8 +35,17 @@ $all_product = $product_count_row['product'];
      </div>
      <div class="humberger__menu__cart">
          <ul>
-             
-             <li><a href="orders.php"><i class="fa fa-shopping-bag"></i> <span><?= $all_product?></span></a></li>
+         <li><a href="wishlist.php"><i class="fa fa-heart"></i> <span><?php if(isset($_SESSION["user_id"])){
+                echo("$all_wishlist");
+             }else{
+                echo("0");
+             }?></span></a></li>
+
+             <li><a href="orders.php"><i class="fa fa-shopping-bag"></i> <span><?php if(isset($_SESSION["user_id"])){
+                echo("$all_product");
+             }else{
+                echo("0");
+             }?></span></a></li>
          </ul>
        
      </div>
@@ -34,20 +54,16 @@ $all_product = $product_count_row['product'];
 
     <?php if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
 
-    echo " <div class='header__top__right__auth'>
-  <a href='profile.php'><i class='fa fa-user'></i>My Account</a>
-
-</div>
-| 
+    echo " 
 <div class='header__top__right__auth'>
-  <a href='logout.php'><i class='fa fa-user'></i>Logout</a>
+  <a href='logout.php'><i class='fa fa-sign-out'></i>Logout</a>
 
 </div>
 
 ";
 } else {
     echo '              <div class="header__top__right__auth">
-<a href="login.php"><i class="fa fa-sign-out"></i> Login</a>
+<a href="login.php"><i class="fa fa-user"></i> Login</a>
 
 </div>';
 }?>
@@ -65,13 +81,13 @@ $all_product = $product_count_row['product'];
      <div id="mobile-menu-wrap"></div>
      <div class="header__top__right__social">
          <a href="#"><i class="fa fa-facebook"></i></a>
-         <a href="#"><i class="fa fa-whatsapp"></i></a>
-         <a href="#"><i class="fa fa-instagram"></i></a>
+         <a href="https://wa.me/03103431884"><i class="fa fa-whatsapp"></i></a>
+                             <a href="https://www.instagram.com/dbalouch50?igsh=MWZ6bmV1cmZvYnYzZQ=="><i class="fa fa-instagram"></i></a>
      </div>
      <div class="humberger__menu__contact">
          <ul>
              <li><i class="fa fa-envelope"></i> Dbalouch50@gmail.com</li>
-             <li>Cash will receivedon delivery</li>
+             <li>Cash will received on delivery & 7 days return policy</li>
          </ul>
      </div>
  </div>
@@ -86,7 +102,7 @@ $all_product = $product_count_row['product'];
                      <div class="header__top__left">
                          <ul>
                              <li><i class="fa fa-envelope"></i> Dbalouch50@gmail.com</li>
-                             <li>Cash will receivedon delivery</li>
+                             <li>Cash will received on delivery & 7 days return policy</li>
                          </ul>
                      </div>
                  </div>
@@ -94,17 +110,13 @@ $all_product = $product_count_row['product'];
                      <div class="header__top__right">
                          <div class="header__top__right__social">
                              <a href="#"><i class="fa fa-facebook"></i></a>
-                             <a href="#"><i class="fa fa-whatsapp"></i></a>
-                             <a href="#"><i class="fa fa-instagram"></i></a>
+                             <a href="https://wa.me/03103431884"><i class="fa fa-whatsapp"></i></a>
+                             <a href="https://www.instagram.com/dbalouch50?igsh=MWZ6bmV1cmZvYnYzZQ=="><i class="fa fa-instagram"></i></a>
                          
                          </div>
           
                          <?php if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
-    echo " <div class='header__top__right__auth'>
-  <a href='profile.php'><i class='fa fa-user'></i>  My Account</a>
-
-</div>
-| 
+    echo " 
 <div class='header__top__right__auth'>
   <a href='logout.php'><i class='fa fa-sign-out'></i>Logout</a>
 
@@ -142,8 +154,16 @@ $all_product = $product_count_row['product'];
              <div class="col-lg-3">
                  <div class="header__cart">
                      <ul>
-                        
-                         <li><a href="orders.php"><i class="fa fa-shopping-cart"></i> <span><?= $all_product?></span></a></li>
+                     <li><a href="wishlist.php"><i class="fa fa-heart"></i> <span><?php if(isset($_SESSION["user_id"])){
+                echo("$all_wishlist");
+             }else{
+                echo("0");
+             }?></span></a></li>
+                         <li><a href="orders.php"><i class="fa fa-shopping-cart"></i> <span><?php if(isset($_SESSION["user_id"])){
+                echo("$all_product");
+             }else{
+                echo("0");
+             }?></span></a></li>
                      </ul>                 </div>
              </div>
          </div>
@@ -157,46 +177,3 @@ $all_product = $product_count_row['product'];
     
       
 
-<section class="hero">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all text-white">
-                           Order Now
-                        </div>
-                       
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="hero__search">
-                    <div class="hero__search__form">
-                        <form action="search-qry.php" method="POST">
-                         
-                            <input type="search" placeholder="What do yo u need?">
-                            <button type="submit" class="site-btn" name="search">SEARCH</button>
-                        </form>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text text-black">
-                                <h5>03103431884</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                            <div class="hero__search__phone__text text-black">
-                                <h5>03103431884</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                            <div class="hero__search__phone__text text-black">
-                                <h5>03103431884</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div></section>
-
-
-  

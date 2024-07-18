@@ -25,6 +25,12 @@
                             <i class="fa-solid fa-cubes text-success fa-lg"></i> <span class="nav-text ml-2"> Products</span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="orders.php" aria-expanded="false">
+                            <i class="fa-solid fa-shopping-cart text-success fa-lg"></i> <span class="nav-text ml-2"> Orders</span>
+                        </a>
+                    </li>
                     <?php if ($_SESSION['user_role'] === "admin") {
             echo '
              <li>

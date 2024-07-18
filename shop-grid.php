@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -12,10 +14,27 @@
     <!-- Google Font -->
 
     <?php require_once("includes/css-links.php"); ?>
+    <style>
+      .call-icons{
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+      }
+
+      .wa-icons{
+        position: fixed;
+        bottom: 25px;
+        left: 25px;
+      }
+    </style>
 </head>
 
 <body>
+  <!-- Call Button -->
+  <img src="./img/call.png" class="call-icons"  height="50px"  onclick="openCallDial()">
 
+<!-- WhatsApp Button -->
+  <img src="./img/whatsapp.png" class="wa-icons" height="50px" onclick="openWhatsAppChat()">
     <?php require_once("includes/header.php"); ?>
     <?php
     // select categories
@@ -34,14 +53,14 @@
     ?>
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="img/bread-crumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Organi Shop</h2>
+                        <h2> Shop</h2>
                         <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
+                            <a href="./index.php">Home</a>
                             <span>Shop</span>
                         </div>
                     </div>
@@ -61,7 +80,7 @@
                             <h4>Department</h4>
                             <ul>
                                 <?php while ($ct = mysqli_fetch_assoc($cats)) { ?>
-                                    <li><a href="#" data-category-id="<?= $ct['id'] ?>" class="category-filter"><?php echo $ct['category'] ?></a></li>
+                                    <li><a href="./shop-grid.php" data-category-id="<?= $ct['id'] ?>" class="category-filter"><?php echo $ct['category'] ?></a></li>
                                 <?php }
                                 mysqli_data_seek($cats, 0);
                                 ?>
@@ -87,7 +106,10 @@
                                             <div class="product__discount__item__pic set-bg" data-setbg="<?php echo getImageUrl("product", $bs['product_image']) ?>">
                                                 <ul class="product__item__pic__hover">
                                                     <li><a href="product-details.php?pid=<?= $bs['id'] ?>"><i class="fa fa-eye"></i></a></li>
-                                                    <li><a href="checkout.php?pid=<?= $bs['id'] ?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                                   
+                                                    <li>
+    <a href="add_to_wishlist.php?pid=<?= $bs['id'] ?>">
+        <i class="fa fa-heart"></i>  <li><a href="checkout.php?pid=<?= $bs['id'] ?>"><i class="fa fa-shopping-cart"></i></a></li>
                                                 </ul>
                                             </div>
                                             <div class="product__discount__item__text">
@@ -126,13 +148,16 @@
             <div class="row featured__filter" id="product-container">
                 <?php while ($prt = mysqli_fetch_assoc($products)) { ?>
                     <?php $prd = getCategroyById($con, $prt['category_id']); ?>
-                    <div class="col-lg-3 col-md-4 col-sm-6" data-category-id="<?php echo $prt['category_id']; ?>">
+                    <div class="col-lg-3 col-md-4 col-sm-6 product-item" data-category-id="<?php echo $prt['category_id']; ?>">
                         <div class="featured__item">
                             <div class="featured__item__pic set-bg" data-setbg="<?php echo getImageUrl("product", $prt['product_image']) ?>">
                                 <ul class="featured__item__pic__hover">
 
                                     <li><a href="product-details.php?pid=<?= $prt['id'] ?>"><i class="fa fa-eye"></i></a></li>
                                     <li><a href="checkout.php?pid=<?= $prt['id'] ?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <li>
+    <a href="add_to_wishlist.php?pid=<?= $prt['id'] ?>">
+        <i class="fa fa-heart"></i> 
                                 </ul>
                             </div>
                             <div class="featured__item__text">
@@ -167,8 +192,6 @@
 
     <!-- Js Plugins -->
     <?php require_once("./includes/js-links.php"); ?>
-
-
     <script>
         $(document).ready(function() {
             $('.category-filter').on('click', function(e) {

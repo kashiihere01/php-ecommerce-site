@@ -14,13 +14,21 @@
    
 <?php require_once("includes/css-links.php"); ?>
 </head>
-
+<style>
+    form a{
+        color: black;
+    }
+    form a:hover{
+        color: green;
+        transition: ease-in-out;
+    }
+</style>
 <body>
-   
+
 <?php require_once("includes/header.php"); ?>
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="img/bread-crumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -38,10 +46,37 @@
     <!-- Breadcrumb Section End -->
 
    <div class="container d-flex justify-content-center">
-    <div class="card align-items-center p-5 border-none">
+    <div class="card align-items-center p-5 shadow-lg mb-4 mt-4" style="border: none;">
+    <?php
+
+if (!empty($_SESSION['success'])) {
+    $msg = $_SESSION['success'];
+    echo  "<div class='alert alert-success alert-dismissible fade text-white  credErr show' role='alert'>
+  <strong>Congratulations!</strong> $msg
+  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+</div>";
+}
+unset($_SESSION['success']);
+
+
+if (!empty($_SESSION['error'])) {
+    $msg = $_SESSION['error'];
+    echo  "<div class='alert alert-danger alert-dismissible fade show credErr text-white' role='alert'>
+    <strong>Warning!</strong> $msg
+    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+  </div>";
+}
+unset($_SESSION['error']);
+
+
+
+?>
+
 <div>
-    <h1>Login Form</h1>
+    <h2 style="font-family:monospace;" class="mb-2">Login Form</h2>
+
 </div>
+
 <form action="./login-qry.php" method="POST">
 <div class="row ">
     <div class="col-12">
@@ -74,7 +109,19 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                $(".uploadingErr").remove();
+            }, 5000);
 
+
+            setTimeout(function() {
+                $(".credErr").remove();
+            }, 3000);
+
+        })
+    </script>
 </body>
 
 </html>

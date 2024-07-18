@@ -9,9 +9,9 @@
                             <a href="./index.html"><img src="img/footer-main.png" alt=""></a>
                         </div>
                         <ul>
-                            <li>Address: 60-49 Road 11378 New York</li>
-                            <li>Phone: +65 11.188.888</li>
-                            <li>Email: hello@colorlib.com</li>
+                            <li>Address:C/o jarwar Advocate Danish Ali H:no 1706/2 Shaikh muhalla larkana</li>
+                            <li>Phone: 03103431884</li>
+                            <li>Email: Dbalouch50@gmail.com</li>
                         </ul>
                     </div>
                 </div>
@@ -19,20 +19,16 @@
                     <div class="footer__widget">
                         <h6>Useful Links</h6>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">About Our Shop</a></li>
-                            <li><a href="#">Secure Shopping</a></li>
-                            <li><a href="#">Delivery infomation</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Our Sitemap</a></li>
+                            <li><a href="about.php">About Us</a></li>
+                            <li><a href="about.php">About Our Shop</a></li>
+                            <li><a href="shop-grid.php">Secure Shopping</a></li>
+                            <li><a href="contact.php">Our Sitemap</a></li>
                         </ul>
                         <ul>
-                            <li><a href="#">Who We Are</a></li>
-                            <li><a href="#">Our Services</a></li>
-                            <li><a href="#">Projects</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Innovation</a></li>
-                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="about.php">Who We Are</a></li>
+                            <li><a href="about.php">Our Services</a></li>
+                            <li><a href="contact.php">Contact</a></li>
+                            <li><a href="../login.php">admin</a></li>
                         </ul>
                     </div>
                 </div>
@@ -46,12 +42,11 @@
                         </form>
                         <div class="footer__widget__social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                            <a href="https://www.instagram.com/dbalouch50?igsh=MWZ6bmV1cmZvYnYzZQ=="><i class="fa fa-instagram"></i></a>
+                            <a href="https://wa.me/03103431884"><i class="fa fa-whatsapp"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
     
-    </footer>
+</footer>

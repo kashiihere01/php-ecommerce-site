@@ -30,8 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             // Execute the query
             if (mysqli_query($con, $query)) {
-               echo"<h1>Order Complete</h1>";
-               exit;
+             
                 $_SESSION['success'] = "Operation performed successfully!";
                 
                 header("Location: checkout.php");

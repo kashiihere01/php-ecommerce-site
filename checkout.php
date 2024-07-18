@@ -1,4 +1,4 @@
-
+<?php require_once("./auth.php")?>s
 <?php
 require_once("./auth.php");
 ?>
@@ -14,10 +14,23 @@ require_once("./auth.php");
     <title>Deals24</title>
     <?php require_once("./includes/css-links.php"); ?>
     <!-- Header Section Begin -->
+    <style>
+      .call-icons{
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+      }
 
+      .wa-icons{
+        position: fixed;
+        bottom: 25px;
+        left: 25px;
+      }
+    </style>
 </head>
 
 <body>
+
 <?php require_once("./includes/header.php"); ?>
 <?php
                             // Retrieving product ID from URL parameter
@@ -25,7 +38,7 @@ require_once("./auth.php");
                             ?>
 <!-- Header Section End -->
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="img/bread-crumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -41,12 +54,40 @@ require_once("./auth.php");
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-
+  
     <!-- Checkout Section Begin -->
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
                 <h4>Billing Details</h4>
+                <?php
+
+if (!empty($_SESSION['success'])) {
+    $msg = $_SESSION['success'];
+    echo " <div class='alert alert-success alert-dismissible fade show credErr'>
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span>
+        </button> <strong>Congratulation! </strong> $msg</div>";
+}
+unset($_SESSION['success']);
+
+
+if (!empty($_SESSION['error'])) {
+    $msg = $_SESSION['error'];
+    echo " <div class='alert alert-danger alert-dismissible fade show credErr'>
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span>
+        </button> <strong>Warning! </strong> $msg</div>";
+}
+unset($_SESSION['error']);
+
+if (!empty($_SESSION['imgErr'])) {
+    $msg = $_SESSION['imgErr'];
+    echo " <div class='alert alert-danger alert-dismissible fade show credErr'>
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span>
+        </button> <strong>Warning! </strong> $msg</div>";
+}
+unset($_SESSION['imgErr']);
+
+?>
                 <form action="./order-qry.php" method="POST">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
@@ -105,7 +146,19 @@ require_once("./auth.php");
 
     <!-- Js Plugins -->
     <?php require_once("./includes/js-links.php"); ?>
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                $(".uploadingErr").remove();
+            }, 5000);
 
+
+            setTimeout(function() {
+                $(".credErr").remove();
+            }, 3000);
+
+        })
+    </script>
 </body>
 
 </html>

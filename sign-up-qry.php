@@ -1,44 +1,51 @@
 <?php
-require_once("./includes/db-con.php");
+session_start();
+require_once("includes/db-con.php"); // Include your database configuration file
 
-if ($_SERVER['REQUEST_METHOD'] === "POST" && $_POST['signup'] === "signup") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get and filter form data
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+    $mobile = filter_input(INPUT_POST, 'mobile', FILTER_SANITIZE_NUMBER_INT);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+    $city = filter_input(INPUT_POST, 'city', FILTER_SANITIZE_STRING);
 
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
-
-
-    $password  = $_POST['password'];
-    if ($email == "" || $password == "") {
-        $_SESSION['error'] = "All feilds are requireds...!";
-        header("Location:register.php");
-        exit;
+    // Validate email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['error'] = "Invalid email format.";
+        header("Location: register.php");
+        exit();
     }
-    // verify username should be unique
-    $select_q = "SELECT * FROM customers WHERE name='$name' ";
-    $result = mysqli_query($con, $select_q);
 
-    if (mysqli_num_rows($result)  === 1) {
-        $_SESSION['invalid'] = "Invalid Credentials...!";
-        header("Location:register.php");
-        exit;
-    }
-    $select_e = "SELECT * FROM customers WHERE email='$email' ";
-    $result = mysqli_query($con, $select_e);
+    // Hash the password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    if (mysqli_num_rows($result)  === 1) {
-        $_SESSION['invalid'] = "User Already exists...!";
-        header("Location:register.php");
-        exit;
-    }
-    // insert
-    $sql = "INSERT INTO customers (`name`, `email`, `password` , `city`,`mobile`) 
-    VALUES('$name', '$email', '$password' , '$city', '$city') ";
+    // Check if the user already exists
+    $query = "SELECT * FROM customers WHERE name = '$name' AND email = '$email'";
+    $result = mysqli_query($con, $query);
 
-    if (mysqli_query($con, $sql)) {
-      
-       
-    
-            header("Location:index.php");
-    
+    if (mysqli_num_rows($result) > 0) {
+        // User with the same name and email exists
+        $_SESSION['error'] = "User with the same name and email already exists.";
+        header("Location: registrater.php");
+        exit();
+    } else {
+        // Insert new user into the database
+        $query = "INSERT INTO customers (name, mobile, email, password, city) VALUES ('$name', '$mobile', '$email', '$hashed_password', '$city')";
+        if (mysqli_query($con, $query)) {
+            // Registration successful
+            $_SESSION['success'] = "Registration successful. You can now log in.";
+            header("Location: login.php");
+            exit();
+        } else {
+            // Error occurred during registration
+            $_SESSION['error'] = "An error occurred during registration. Please try again.";
+            header("Location: register.php");
+            exit();
+        }
     }
+
+    // Close connection
+    mysqli_close($con);
 }
+?>

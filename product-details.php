@@ -43,9 +43,13 @@
         $nextProducts = getnextProducts($con);
 
     ?>
+  <!-- Call Button -->
+  <img src="./img/call.png" class="call-icons"  height="50px"  onclick="openCallDial()">
 
+<!-- WhatsApp Button -->
+  <img src="./img/whatsapp.png" class="wa-icons" height="50px" onclick="openWhatsAppChat()">
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="img/bread-crumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -78,19 +82,12 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
                         <h3><?php echo $product['product_name']?></h3>
-                        <div class="product__details__rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <span>(18 reviews)</span>
-                        </div>
+                 
                         <div class="product__details__price"><?php echo $product['product_price']?></div>
                         <p><?php echo $product['product_description']?></p>
-                        <div class="product__details__quantity">
-                           
-                        </div>
+                     <button class="btn btn-sm btn-success text-white p-2">
+                     <a href="checkout.php?pid=<?= $product['id'] ?>"><i class="fa fa-shopping-cart"></i> Buy Now</a>
+                     </button>
                         <ul>
                             <li><b>Availability</b> <span>In Stock</span></li>
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
@@ -130,7 +127,7 @@
                                 <?php while ($row = mysqli_fetch_assoc($nextProducts)) { ?>
                                     <div class="col-lg-3">
                                         <div class="categories__item set-bg" data-setbg="<?php echo getImageUrl("product", $row['product_image']) ?>">
-                                            <h5><a href="./products.php"><?= $row['product_name'] ?></a></h5>
+                                            <h5><a href="./shop-grid.php"><?= $row['product_name'] ?></a></h5>
                                         </div>
                                     </div>
                                 <?php }
@@ -149,17 +146,17 @@
     <?php require_once("./includes/js-links.php") ?>
     <script>
     // Function to open call dialer
-    function openCallDial() {
-      // Replace '123456789' with the actual phone number you want to call
-      window.location.href = 'tel:+123456789';
-    }
+function openCallDial() {
+  // Replace '123456789' with the actual phone number you want to call
+  window.location.href = 'tel:++92310 3431884 ';
+}
 
-    // Function to open WhatsApp chat
-    function openWhatsAppChat() {
-      // Replace '123456789' with the actual phone number you want to chat with
-      window.location.href = 'https://wa.me/123456789';
-    }
-  </script>
+// Function to open WhatsApp chat
+function openWhatsAppChat() {
+  // Replace '123456789' with the actual phone number you want to chat with
+  window.location.href = 'https://wa.me/0310 3431884 ';
+}
+   </script>
 
 </body>
 
