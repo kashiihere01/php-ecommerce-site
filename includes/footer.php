@@ -28,7 +28,7 @@
                             <li><a href="about.php">Who We Are</a></li>
                             <li><a href="about.php">Our Services</a></li>
                             <li><a href="contact.php">Contact</a></li>
-                            <li><a href="../login.php">admin</a></li>
+                            <li><a href="admin/login.php">admin</a></li>
                         </ul>
                     </div>
                 </div>

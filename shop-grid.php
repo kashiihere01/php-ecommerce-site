@@ -1,40 +1,27 @@
 <?php session_start();?>
 
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Ogani Template">
-    <meta name="keywords" content="Ogani, unica, creative, html">
+<meta charset="UTF-8">
+    <meta name="description" content="Deal24 - Your one-stop shop for shoes, t-shirts, suits, perfumes, and watches. Discover the best deals on top-quality products.">
+    <meta name="keywords" content="Deal24, e-commerce, online shopping, shoes, t-shirts, suits, perfumes, watches, best deals, top-quality products">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Deals24</title>
+    <title>Shop - Deal24</title>
 
-    <!-- Google Font -->
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Home - Deal24">
+    <meta property="og:description" content="Deal24 - Your one-stop shop for shoes, t-shirts, suits, perfumes, and watches. Discover the best deals on top-quality products.">
 
-    <?php require_once("includes/css-links.php"); ?>
-    <style>
-      .call-icons{
-        position: fixed;
-        bottom: 25px;
-        right: 25px;
-      }
-
-      .wa-icons{
-        position: fixed;
-        bottom: 25px;
-        left: 25px;
-      }
-    </style>
+    <meta property="og:site_name" content="Deal24">
+       <?php require_once("includes/css-links.php"); ?>
 </head>
 
 <body>
   <!-- Call Button -->
-  <img src="./img/call.png" class="call-icons"  height="50px"  onclick="openCallDial()">
 
-<!-- WhatsApp Button -->
-  <img src="./img/whatsapp.png" class="wa-icons" height="50px" onclick="openWhatsAppChat()">
     <?php require_once("includes/header.php"); ?>
     <?php
     // select categories

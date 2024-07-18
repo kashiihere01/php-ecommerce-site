@@ -1,30 +1,33 @@
 <?php session_start();?>
-
 <!DOCTYPE html>
-<html lang="zxx">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Ogani Template">
-    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="description" content="Deal24 - Your one-stop shop for shoes, t-shirts, suits, perfumes, and watches. Discover the best deals on top-quality products.">
+    <meta name="keywords" content="Deal24, e-commerce, online shopping, shoes, t-shirts, suits, perfumes, watches, best deals, top-quality products">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Deals24</title>
+    <title>Home - Deal24</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Home - Deal24">
+    <meta property="og:description" content="Deal24 - Your one-stop shop for shoes, t-shirts, suits, perfumes, and watches. Discover the best deals on top-quality products.">
+
+    <meta property="og:site_name" content="Deal24">
+
+
+    <!-- Stylesheets and Fonts -->
+    <?php require_once("includes/css-links.php"); ?>
+</head>
+<body>
+    <!-- Your content here -->
+</body>
+</html>
+
 
 <?php require_once("includes/css-links.php"); ?>
-<style>
-      .call-icons{
-        position: fixed;
-        bottom: 25px;
-        right: 25px;
-      }
 
-      .wa-icons{
-        position: fixed;
-        bottom: 25px;
-        left: 25px;
-      }
-    </style>
 </head>
 
 <body>
