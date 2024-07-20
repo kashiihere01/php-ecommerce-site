@@ -80,7 +80,7 @@ $all_wishlist = $wishlist_count_row['product_wishlist'];
      </nav>
      <div id="mobile-menu-wrap"></div>
      <div class="header__top__right__social">
-         <a href="#"><i class="fa fa-facebook"></i></a>
+         <a href="https://www.facebook.com/profile.php?id=61563042328523"><i class="fa fa-facebook"></i></a>
          <a href="https://wa.me/03103431884"><i class="fa fa-whatsapp"></i></a>
                              <a href="https://www.instagram.com/dbalouch50?igsh=MWZ6bmV1cmZvYnYzZQ=="><i class="fa fa-instagram"></i></a>
      </div>
@@ -109,7 +109,7 @@ $all_wishlist = $wishlist_count_row['product_wishlist'];
                  <div class="col-lg-6 col-md-6">
                      <div class="header__top__right">
                          <div class="header__top__right__social">
-                             <a href="#"><i class="fa fa-facebook"></i></a>
+                             <a href="https://www.facebook.com/profile.php?id=61563042328523"><i class="fa fa-facebook"></i></a>
                              <a href="https://wa.me/03103431884"><i class="fa fa-whatsapp"></i></a>
                              <a href="https://www.instagram.com/dbalouch50?igsh=MWZ6bmV1cmZvYnYzZQ=="><i class="fa fa-instagram"></i></a>
                          

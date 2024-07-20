@@ -20,15 +20,8 @@
     <!-- Stylesheets and Fonts -->
     <?php require_once("includes/css-links.php"); ?>
 </head>
-<body>
+
     <!-- Your content here -->
-</body>
-</html>
-
-
-<?php require_once("includes/css-links.php"); ?>
-
-</head>
 
 <body>
 
@@ -245,19 +238,7 @@ unset($_SESSION['imgErr']);
     <!-- Js Plugins -->
     <?php require_once("./includes/js-links.php"); ?>
 
-    <script>
-    // Function to open call dialer
-function openCallDial() {
-  // Replace '123456789' with the actual phone number you want to call
-  window.location.href = 'tel:++92310 3431884 ';
-}
 
-// Function to open WhatsApp chat
-function openWhatsAppChat() {
-  // Replace '123456789' with the actual phone number you want to chat with
-  window.location.href = 'https://wa.me/0310 3431884 ';
-}
-   </script>
      <script>
         $(document).ready(function() {
             setTimeout(function() {

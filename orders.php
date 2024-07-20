@@ -19,19 +19,7 @@
 
     <!-- Google Font -->
     <?php require_once("includes/css-links.php"); ?>
-    <style>
-      .call-icons{
-        position: fixed;
-        bottom: 25px;
-        right: 25px;
-      }
 
-      .wa-icons{
-        position: fixed;
-        bottom: 25px;
-        left: 25px;
-      }
-    </style>
 </head>
 
 <body>

@@ -42,5 +42,5 @@ By leveraging PHP, HTML, CSS, JavaScript (including AJAX), and SCSS, your ecomme
 ---
 
 **admin Login:**
-Email : km5712024@gmail.com
-Password : 111
+Email : dbalouch50@gmail.com
+Password : danish
